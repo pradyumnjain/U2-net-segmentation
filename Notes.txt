@@ -1,0 +1,13 @@
+Salient object detection(SOD) is a task-based on a visual attention mechanism, in which algorithms aim to explore objects or regions more attentive than the surrounding areas on the scene or images.
+
+In the Multi-level deep feature integration technique, we take the patches of the images and try to extract the contextual features, another type of technique is Multi-scale feature extraction. 1) 3*3 filter is good for extracting local features. 2) pyramind pooling module for global context
+
+The technique used in the paper is Multi-scale feature extraction which is implemented from scratch by not using the pre-trained backbone models like used previously such as VGG, AlexNet, ResNet, etc.  It is built by the inspiration of Inspired by U-Net, a novel network ReSidual U-block, RSU to capture intra-stage multi-scale features.
+
+To preserve the contextual information and not to focus more on the fine details the above architecture is used in which U-block extracted the contextual features.
+
+The obtained features are downsampled so as the contextual features get retained and at the end, our result does not get affected by the extracted fine details of the picture i.e color, texture, etc. After the features are extracted they are encoded and decoded after upsampling . The computation of the model is also very less(can be observed in the graph) as it focuses on the downsampled features.
+
+The full architecture of the model contains 6 encoders, 5 decoders, and 1 saliency map fusion module which contains the sigmoid function and 1 convolution layer of 3*3 dimension.
+
+The dataset used for training is the largest and most used training dataset i.e. DUTS-TR , and for evaluation, they used 6 frequent datasets DUT-OMRON, DUTS-TE, HKU-IS, ECSSD, PASCAL-S, SOD.
